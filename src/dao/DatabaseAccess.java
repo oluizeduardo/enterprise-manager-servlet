@@ -9,10 +9,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+@WebServlet(urlPatterns="/busca")
 public class DatabaseAccess extends HttpServlet {
 
 	
@@ -33,7 +36,7 @@ public class DatabaseAccess extends HttpServlet {
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		
-		String title = "Database Result";		
+		String title = "Empresas Cadastradas";		
 			      
 	    out.println("<!DOCTYPE html>" +
 	         "<html>\n" +
@@ -52,6 +55,8 @@ public class DatabaseAccess extends HttpServlet {
 			
 			ResultSet rs = stm.executeQuery(sql);
 			
+			out.println("<ul>");
+			
 			// Extracting data from ResultSet object.
 			while(rs.next()){
 				
@@ -60,12 +65,15 @@ public class DatabaseAccess extends HttpServlet {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				
+				out.println("<li>");
 				// Display the values.
-				out.println("ID: "+id+"<br>");
-				out.println("NAME: "+name+"<br>");
-				out.println("EMAIL: "+id+"<p>");				
+				out.println("ID: "+id);
+				out.println(" NAME: "+name);
+				out.println(" EMAIL: "+email);	
+				
+				out.println("</li>");
 			}
-			
+			out.println("</ul>");
 			out.println("</body></html>");
 			
 			// Close the opened objects. Clean-up environment.
