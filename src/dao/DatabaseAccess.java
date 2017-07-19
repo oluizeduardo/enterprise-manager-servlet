@@ -74,6 +74,11 @@ public class DatabaseAccess extends HttpServlet {
 				out.println("</li>");
 			}
 			out.println("</ul>");
+			
+			out.println("<h2>");
+	        out.println("<a href=\"http://localhost:8080/EnterpriseManager/\">Cadastrar nova empresa</a>");
+	        out.println("</h2>");
+			
 			out.println("</body></html>");
 			
 			// Close the opened objects. Clean-up environment.
