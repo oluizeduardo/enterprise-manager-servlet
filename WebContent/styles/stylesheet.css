@@ -84,13 +84,21 @@ form input[type="email"] {
 }
 
 
-.buttonform {
+.button{
     border-radius:5px;
-    padding:10px;
-    background-color:#006699;
+    padding:10px;   
     border:1px solid #000;
     color:#fff;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     margin-top: 15px;
+    margin-right: 15px;
+}
+
+.buttonformCadastrar {
+    background-color:#006699;
+}
+
+.buttonformListar {
+    background-color: lightsalmon;
 }
