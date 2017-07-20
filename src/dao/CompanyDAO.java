@@ -21,8 +21,11 @@ public class CompanyDAO extends DatabaseConnection {
 	/**
 	 * Insert into database a new Company object.
 	 * @param newCompany
+	 * @return status
 	 */
-	public void insert(Company newCompany){
+	public boolean insert(Company newCompany){
+		
+		boolean status = false;
 		try {
 
 			String sql = "INSERT INTO "+TABLE_NAME+" VALUES (?, ?, ?)";
@@ -33,13 +36,14 @@ public class CompanyDAO extends DatabaseConnection {
 			pstm.setString(2, newCompany.getName());
 			pstm.setString(3, newCompany.getEmail());
 			
-			pstm.execute();
+			status = pstm.execute();
 			
 			pstm.close();
 			conn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return status;
 	}
 	
 	

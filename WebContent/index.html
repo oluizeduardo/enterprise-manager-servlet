@@ -8,13 +8,13 @@
 <body bgcolor = "#f0f0f0">
     
     
-    <form>
+    <form method="POST" action="newCompany">
         <fieldset>
             <legend>Cadastro de Empresas</legend>
                 <div align="center">
-                    Registro: <input type="number"><p>
-                    Nome: <input type="text"><p>
-                    Email: <input type="email"><p>
+                    Registro: <input type="number" name="id"><p>
+                    Nome: <input type="text" name="name"><p>
+                    Email: <input type="email" name="email"><p>
                     
                     <input type="submit" value="Cadastrar" class="buttonformCadastrar button">
                     <input type="submit" value="Listar Empresas" class="buttonformListar button">
