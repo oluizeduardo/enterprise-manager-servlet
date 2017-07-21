@@ -31,10 +31,17 @@ public class NewCompany extends HttpServlet {
 		boolean failed = new CompanyDAO().insert(newCompany);
 		PrintWriter writer = resp.getWriter();
 		
+		writer.println("<html><body>");
+		writer.println("<div align=\"center\">");
 		if(failed)
-			writer.println("<html><body>Erro ao cadastrar uma nova empresa!</body></html>");
+			writer.println("<h1>An error has been detected!</h1>");
 		else
-			writer.println("<html><body>Nova empresa adicionada com sucesso!</body></html>");
+			writer.println("<h1>A new company has been added with success!</h1>");
+		
+		writer.println("</div>");
+		writer.println("<p>");
+		writer.println("<h3><a href=\"/EnterpriseManager/search\">List of Registered Companies</a></h3>");
+		writer.println("</body></html>");
 		
 	}
 	

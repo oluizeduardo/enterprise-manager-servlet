@@ -6,20 +6,16 @@
     <link rel="stylesheet" type="text/css" href="styles/stylesheet.css"> 
 </head>
 <body bgcolor = "#f0f0f0">
-    
-    
-    <form method="POST" action="newCompany">
-        <fieldset>
-            <legend>Cadastro de Empresas</legend>
-                <div align="center">
-                    Registro: <input type="number" name="id"><p>
-                    Nome: <input type="text" name="name"><p>
-                    Email: <input type="email" name="email"><p>
-                    
+    <fieldset>
+        <legend>Cadastro de Empresas</legend>
+            <div align="center">
+                <form method="POST" action="newCompany">
+                    Registro: <input type="number" name="id" autofocus="autofocus" required><p>
+                    Nome: <input type="text" name="name" required><p>
+                    Email: <input type="email" name="email" placeholder="email@email.com" required><p>
                     <input type="submit" value="Cadastrar" class="buttonformCadastrar button">
-                    <input type="submit" value="Listar Empresas" class="buttonformListar button">
-                </div>  
-        </fieldset>
-    </form>    
+                </form>
+            </div> 
+    </fieldset>
 </body>
 </html>

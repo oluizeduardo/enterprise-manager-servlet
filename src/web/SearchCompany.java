@@ -46,6 +46,9 @@ public class SearchCompany extends HttpServlet {
 			out.println("</li>");
 		}
 		out.println("</ul>");
+		out.println("<p>");
+		out.println("<a href=\"/EnterpriseManager/\">Add New Company</a>");
+		out.println("</body></html>");
 		
 	}
 	
