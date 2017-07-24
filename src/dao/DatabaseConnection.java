@@ -2,6 +2,8 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -17,7 +19,13 @@ public class DatabaseConnection {
     private String password = "postgres";  
     private String driver = "org.postgresql.Driver";
 	
-	
+    // Objects used by the superclasses DAO.
+    protected Connection conn = null;
+    protected PreparedStatement pstm = null;
+    protected ResultSet rs = null;
+    
+    
+    
     public DatabaseConnection() { }
     
     

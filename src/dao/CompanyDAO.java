@@ -1,8 +1,5 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +10,9 @@ public class CompanyDAO extends DatabaseConnection {
 	/**The table name in database.*/
 	private static final String TABLE_NAME = "companies";
 	
-	private Connection conn = null;
-	private PreparedStatement pstm = null;
-	private ResultSet rs = null;
 	
+	
+	public CompanyDAO(){ }
 	
 	
 	
@@ -32,8 +28,8 @@ public class CompanyDAO extends DatabaseConnection {
 
 			String sql = "INSERT INTO "+TABLE_NAME+" VALUES (?, ?, ?)";
 			
-			this.conn = super.getConnection();
-			this.pstm = conn.prepareStatement(sql);
+			super.conn = super.getConnection();
+			super.pstm = conn.prepareStatement(sql);
 			pstm.setInt(1, newCompany.getId());
 			pstm.setString(2, newCompany.getName());
 			pstm.setString(3, newCompany.getEmail());
@@ -59,9 +55,9 @@ public class CompanyDAO extends DatabaseConnection {
 		
 		try {
 			
-			this.conn = super.getConnection();
-			this.pstm = conn.prepareStatement("SELECT * FROM "+TABLE_NAME);
-			this.rs = pstm.executeQuery();
+			super.conn = super.getConnection();
+			super.pstm = conn.prepareStatement("SELECT * FROM "+TABLE_NAME);
+			super.rs = pstm.executeQuery();
 			
 			while(rs.next()){
 				Company company = new Company();
@@ -89,9 +85,9 @@ public class CompanyDAO extends DatabaseConnection {
 	public void delete(Company comp){
 		try {
 			
-			this.conn = super.getConnection();
-			this.pstm = conn.prepareStatement("DELETE * FROM "+TABLE_NAME+" WHERE id = "+comp.getId());
-			this.pstm.execute();
+			super.conn = super.getConnection();
+			super.pstm = conn.prepareStatement("DELETE * FROM "+TABLE_NAME+" WHERE id = "+comp.getId());
+			super.pstm.execute();
 			
 			pstm.close();
 			conn.close();
@@ -112,9 +108,9 @@ public class CompanyDAO extends DatabaseConnection {
 		Company comp = null;
 		try {
 			
-			this.conn = super.getConnection();
-			this.pstm = conn.prepareStatement("SELECT * FROM "+TABLE_NAME+" WHERE id = "+comp.getId());
-			this.rs = pstm.executeQuery();
+			super.conn = super.getConnection();
+			super.pstm = conn.prepareStatement("SELECT * FROM "+TABLE_NAME+" WHERE id = "+comp.getId());
+			super.rs = pstm.executeQuery();
 			
 			if(rs.next()){
 				comp = new Company();
@@ -132,6 +128,5 @@ public class CompanyDAO extends DatabaseConnection {
 		return comp;
 	}
 	
-	
-	
+
 }
