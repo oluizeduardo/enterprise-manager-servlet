@@ -28,16 +28,14 @@ public class UserDAO extends DatabaseConnection {
 			
 			super.conn = super.getConnection();
 			super.pstm = conn.prepareStatement(
-					"SELECT * FROM "+TABLE_NAME+" WHERE email = '"+email+"' AND password = '"+password+"'");
+					"SELECT name FROM "+TABLE_NAME+" WHERE email = '"+email+"' AND password = '"+password+"'");
 			super.rs = pstm.executeQuery();
 			
 			if(rs.next()){
 				
-				String em = rs.getString("email");
-				String pw = rs.getString("password");
 				String nm = rs.getString("name");
 				
-				user = new User(em, pw);		
+				user = new User(email, password);		
 				user.setName(nm);
 			}
 			

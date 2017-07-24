@@ -8,6 +8,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -24,6 +25,15 @@ public class WebFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
+		Cookie[] cookies = req.getCookies();
+		String user = "<offline>";
+		
+		for (Cookie cookie : cookies) {
+			if(cookie.getName().equals("user.online")){
+				user = cookie.getValue();
+			}
+		}
+		
 		
 		System.out.println("User access: "+uri);
 		
