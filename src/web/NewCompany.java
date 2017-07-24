@@ -16,6 +16,8 @@ import pojo.Company;
 @WebServlet (urlPatterns = "/newCompany")
 public class NewCompany extends HttpServlet {
 
+	
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
