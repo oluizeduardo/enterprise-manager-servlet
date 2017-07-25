@@ -18,17 +18,9 @@ public class Logout extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Cookie cookie = new Cookies(req.getCookies()).searchUserOnline();
+		req.getSession().invalidate();
 		PrintWriter writer = resp.getWriter();
-		
-		if(cookie == null){
-			writer.println("<html><body>The user was not online!</body></html>");
-			return;
-		}
-		cookie.setMaxAge(0); // Minimum time to live.
-		resp.addCookie(cookie);
 		writer.println("<body><html>You're offline!</body></html>");
-		
 	}
 	
 }

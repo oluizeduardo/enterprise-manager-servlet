@@ -11,6 +11,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import pojo.User;
+
 
 @javax.servlet.annotation.WebFilter(urlPatterns = "/*")
 public class WebFilter implements Filter {
@@ -40,9 +42,9 @@ public class WebFilter implements Filter {
 	 * @return The name of the user online.
 	 */
 	private String getUser(HttpServletRequest req) {
-		Cookie cookie = new Cookies(req.getCookies()).searchUserOnline();
-		if(cookie == null) return "<offline>";
-		return cookie.getValue();
+		User user = (User) req.getSession().getAttribute("user.online");
+		if(user == null) return "<offline>";
+		return user.getName();
 	}
 
 

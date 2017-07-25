@@ -9,6 +9,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import dao.UserDAO;
 import pojo.User;
 
@@ -29,19 +31,15 @@ public class Login extends HttpServlet {
 		resp.setContentType("text/html");
 		
 		if(newUser != null){			
-			Cookie cookie = new Cookie("user.online", newUser.getName());
-			cookie.setMaxAge(10 * 60);// Time to live: 10 minutes.
-			resp.addCookie(cookie);
+			HttpSession session = req.getSession();
+			session.setAttribute("user.online", newUser);
 			
 			view = req.getRequestDispatcher("registration.html");
 			
 		}else{
 			view = req.getRequestDispatcher("login.html");
 		}
-		view.forward(req, resp);
-		
-		
-        		
+		view.forward(req, resp); 		
 	}
 	
 }
