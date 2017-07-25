@@ -19,8 +19,7 @@ public class Logout extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.getSession().invalidate();
-		PrintWriter writer = resp.getWriter();
-		writer.println("<body><html>You're offline!</body></html>");
+		resp.sendRedirect("login.html");
 	}
 	
 }

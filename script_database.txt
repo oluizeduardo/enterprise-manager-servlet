@@ -1,0 +1,23 @@
+
+
+CREATE TABLE companies
+(
+    id integer NOT NULL,
+    name character varying(100) NOT NULL,
+    email character varying(100) NOT NULL,
+    CONSTRAINT company_pkey PRIMARY KEY (id)
+); 
+
+
+CREATE TABLE users
+(
+    id integer NOT NULL,
+    email character varying(100) NOT NULL,
+    password character varying(100) NOT NULL,
+    name character varying(100) NOT NULL,
+    CONSTRAINT users_pkey PRIMARY KEY (id)
+);
+
+
+INSERT INTO users VALUES (1, 'adm@adm.com', 'admin', 'ADMINISTRADOR');
+INSERT INTO users VALUES (2, 'adm@adm.com', '12345', 'ADM SYSTEM');

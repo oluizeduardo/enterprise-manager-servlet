@@ -27,19 +27,17 @@ public class Login extends HttpServlet {
 		
 		User newUser = new UserDAO().searchByEmailAndPassword(email, password);
 		
-		RequestDispatcher view;
 		resp.setContentType("text/html");
 		
 		if(newUser != null){			
 			HttpSession session = req.getSession();
 			session.setAttribute("user.online", newUser);
 			
-			view = req.getRequestDispatcher("registration.html");
+			resp.sendRedirect("registration.html");
 			
 		}else{
-			view = req.getRequestDispatcher("login.html");
-		}
-		view.forward(req, resp); 		
+			resp.sendRedirect("login.html");
+		}		
 	}
 	
 }
