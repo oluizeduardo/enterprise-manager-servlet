@@ -3,6 +3,7 @@ package web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,19 +32,14 @@ public class NewCompany extends HttpServlet {
 		newCompany.setEmail(email);
 		
 		boolean failed = new CompanyDAO().insert(newCompany);
-		PrintWriter writer = resp.getWriter();
+		RequestDispatcher disp;
 		
-		writer.println("<html><body>");
-		writer.println("<div align=\"center\">");
 		if(failed)
-			writer.println("<h1>An error has been detected!</h1>");
+			disp = req.getRequestDispatcher("WEB-INF/pages/alerts/error.html");
 		else
-			writer.println("<h1>A new company has been added with success!</h1>");
+			disp = req.getRequestDispatcher("WEB-INF/pages/alerts/success.html");
 		
-		writer.println("</div>");
-		writer.println("<p>");
-		writer.println("<h3><a href=\"/EnterpriseManager/search\">List of Registered Companies</a></h3>");
-		writer.println("</body></html>");
+		disp.forward(req, resp);
 		
 	}
 	
