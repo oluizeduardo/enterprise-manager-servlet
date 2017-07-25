@@ -29,7 +29,8 @@ public class Login extends HttpServlet {
 		resp.setContentType("text/html");
 		
 		if(newUser != null){			
-			Cookie cookie = new Cookie("user.online", newUser.getEmail());
+			Cookie cookie = new Cookie("user.online", newUser.getName());
+			cookie.setMaxAge(10 * 60);// Time to live: 10 minutes.
 			resp.addCookie(cookie);
 			
 			view = req.getRequestDispatcher("registration.html");

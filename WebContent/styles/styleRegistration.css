@@ -77,3 +77,8 @@ form input[type="email"] {
     background-color:#006699;
 }
 
+.buttonLogout {
+    background-color: #ff7f50;
+    margin: 20px;
+}
+

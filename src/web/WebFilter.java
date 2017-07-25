@@ -25,22 +25,29 @@ public class WebFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
-		Cookie[] cookies = req.getCookies();
-		String user = "<offline>";
 		
-		for (Cookie cookie : cookies) {
-			if(cookie.getName().equals("user.online")){
-				user = cookie.getValue();
-			}
-		}
+		String user = getUser(req);
 		
-		
-		System.out.println("User access: "+uri);
+		System.out.println("User "+user+" accessing: "+uri);
 		
 		chain.doFilter(request, response);
 	}
 
+	
+	
+	/**
+	 * @param req An object HttpServletRequest.
+	 * @return The name of the user online.
+	 */
+	private String getUser(HttpServletRequest req) {
+		Cookie cookie = new Cookies(req.getCookies()).searchUserOnline();
+		if(cookie == null) return "<offline>";
+		return cookie.getValue();
+	}
+
+
 	@Override
 	public void init(FilterConfig arg0) throws ServletException { }
-
+	
+	
 }
