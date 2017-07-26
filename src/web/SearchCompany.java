@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,12 @@ public class SearchCompany extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		/*List<Company> companies = new CompanyDAO().list();
+		req.setAttribute("companies", companies);
+				
+		RequestDispatcher disp = req.getRequestDispatcher("WEB-INF/pages/search.jsp");
+		disp.forward(req, resp);*/
 		
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
@@ -49,7 +56,6 @@ public class SearchCompany extends HttpServlet {
 		out.println("<p>");
 		out.println("<a href=\"/EnterpriseManager/registration.html\">Add New Company</a>");
 		out.println("</body></html>");
-		
 	}
 	
 }
