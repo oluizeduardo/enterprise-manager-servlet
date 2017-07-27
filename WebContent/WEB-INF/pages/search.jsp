@@ -1,19 +1,28 @@
 <html lang="pt">
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" type="text/css" href="styles/styleTableCompanies.css"> 
-    <title>Registered Companies</title>
+    <title>
+    	<fmt:message key="mesage.titlepage"/>
+    </title>
 </head>
 <body>
-    <h1 align = "center">Registered Companies</h1>
+    <h1 align = "center">
+    	<fmt:message key="mesage.welcome"/>
+    </h1>
      
 	<div align="center"> 
 		<table>
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>NAME</th>
+					<th>
+						<fmt:message key="mesage.id"/>
+					</th>
+					<th>
+						<fmt:message key="mesage.name"/>
+					</th>
 					<th>EMAIL</th>
 				</tr>
 			</thead>	
@@ -25,8 +34,12 @@
 				</tr>
 			</c:forEach>
 		</table> 
-	<div align="center"> 
-    <p>
-    <a href="/EnterpriseManager/registration.html">Add New Company</a>
+	</div> 
+    <p/>
+    <a href="/EnterpriseManager/registration.html">
+    	<fmt:message key="mesage.newcompany"/>
+    </a>
+    
+    <c:import url="comon/footer.jsp"/>
 </body>
 </html>
