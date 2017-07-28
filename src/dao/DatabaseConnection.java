@@ -11,7 +11,7 @@ public class DatabaseConnection {
 
 	
 	// Connection with Postgre database.
-	private String address = "127.0.0.1";
+	private String address = "localhost";
 	private String port = "5432";
 	private String nameDatabase = "EnterpriseManager";
     private String url = "jdbc:postgresql://"+address+":"+port+"/"+nameDatabase;  

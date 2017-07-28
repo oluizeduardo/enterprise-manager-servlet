@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="styles/styleTableCompanies.css"> 
     <title>
     	<fmt:message key="mesage.titlepage"/>
@@ -24,13 +24,25 @@
 						<fmt:message key="mesage.name"/>
 					</th>
 					<th>EMAIL</th>
+					<th>
+						<fmt:message key="mesage.action"/>
+					</th>
 				</tr>
 			</thead>	
 			<c:forEach var="company" items="${companies}">
 				<tr>
-					<td id="width_id_column">${company.id}</td>
-					<td id="width_name_column">${company.name}</td>
-					<td id="width_email_column">${company.email}</td>
+					<td id="table_id_column">${company.id}</td>
+					<td id="table_name_column">${company.name}</td>
+					<td id="table_email_column">${company.email}</td>
+					<td id="table_action_column">						
+						<a href="update?id=<c:out value="${company.id}"/>">
+							<img src='img/edit.png' alt="<fmt:message key="mesage.update"/>">
+						</a>
+						&nbsp &nbsp
+						<a href="delete?id=<c:out value="${company.id}"/>">
+							<img src='img/delete.png' alt="<fmt:message key="mesage.delete"/>">
+						</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table> 

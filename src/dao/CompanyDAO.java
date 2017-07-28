@@ -25,7 +25,7 @@ public class CompanyDAO extends DatabaseConnection {
 		
 		boolean status = false;
 		try {
-
+			
 			String sql = "INSERT INTO "+TABLE_NAME+" VALUES (?, ?, ?)";
 			
 			super.conn = super.getConnection();
@@ -38,6 +38,7 @@ public class CompanyDAO extends DatabaseConnection {
 			
 			pstm.close();
 			conn.close();
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -82,11 +83,11 @@ public class CompanyDAO extends DatabaseConnection {
 	 * Delete a company from the database.
 	 * @param comp An object Company that will be deleted.
 	 */
-	public void delete(Company comp){
+	public void delete(int id){
 		try {
 			
 			super.conn = super.getConnection();
-			super.pstm = conn.prepareStatement("DELETE * FROM "+TABLE_NAME+" WHERE id = "+comp.getId());
+			super.pstm = conn.prepareStatement("DELETE FROM "+TABLE_NAME+" WHERE id = "+id);
 			super.pstm.execute();
 			
 			pstm.close();

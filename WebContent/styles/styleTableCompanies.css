@@ -33,14 +33,19 @@ thead tr:hover {
   color: inherit;
 }
 
-#width_id_column{
-    width: 20%;
+#table_id_column{
+    width: 25%;
     text-align: center;
 }
-#width_name_column{
-    width: 50%;
+#table_name_column{
+    width: 25%;
 }
 
-#width_email_column{
-    width: 30%;
+#table_email_column{
+    width: 25%;
+}
+
+#table_action_column{
+    width: 25%;
+    text-align: center;
 }
