@@ -1,6 +1,7 @@
-package web;
+package filters;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -8,18 +9,19 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import pojo.User;
 
 
-@javax.servlet.annotation.WebFilter(urlPatterns = "/*")
-public class WebFilter implements Filter {
+@WebFilter(urlPatterns = {"/registration.html", "/search", "/newCompany"})
+public class FilterOfflineUser implements Filter {
 
-	@Override
-	public void destroy() { }
-
+	
+	private final String OFFLINE = "<offline>";
+	
 	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -30,9 +32,17 @@ public class WebFilter implements Filter {
 		
 		String user = getUser(req);
 		
-		System.out.println("User "+user+" accessing: "+uri);
-		
-		chain.doFilter(request, response);
+		if(user.equals(OFFLINE)){
+			
+			System.out.println("=> Access Denied!! You need to be logged in. <=");
+			HttpServletResponse resp = (HttpServletResponse) response;
+
+			resp.sendRedirect("login.html");
+		}else{
+			System.out.println("User "+user+" accessing: "+uri);
+			
+			chain.doFilter(request, response);	
+		}		
 	}
 
 	
@@ -43,13 +53,16 @@ public class WebFilter implements Filter {
 	 */
 	private String getUser(HttpServletRequest req) {
 		User user = (User) req.getSession().getAttribute("user.online");
-		if(user == null) return "<offline>";
+		if(user == null) return OFFLINE;
 		return user.getName();
 	}
 
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException { }
+	
+	@Override
+	public void destroy() { }
 	
 	
 }
