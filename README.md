@@ -12,3 +12,5 @@ A simple CRUD project to study Java Servlet. It also use the JSP and JSTL techno
 * [Postgresql 9.4.1208](https://mvnrepository.com/artifact/postgresql/postgresql/9.4.1208-jdbc42-atlassian-hosted)
 * [JavaServer Pages Standard Tag Library » 1.2](https://mvnrepository.com/artifact/javax.servlet.jsp.jstl/jstl-api/1.2)
 * [JavaServer Pages TagLib Implementation » 1.2](https://mvnrepository.com/artifact/org.glassfish.web/jstl-impl/1.2)
+
+The libraries must be added into the folder _*WebContent>WEB-INF>lib*_.
